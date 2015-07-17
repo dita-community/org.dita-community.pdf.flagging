@@ -4,12 +4,8 @@
   xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
   exclude-result-prefixes="xs xd"
   version="2.0">
-  <xd:doc scope="stylesheet">
-    <xd:desc>
-      <xd:p><xd:b>Created on:</xd:b> Jul 15, 2015</xd:p>
-      <xd:p><xd:b>Author:</xd:b> ekimber</xd:p>
-      <xd:p></xd:p>
-    </xd:desc>
-  </xd:doc>
-  <xsl:include href="flagging-preprocess.xsl"/>
+  
+  <xsl:include href="commons.xsl"/>
+  <xsl:include href="toc.xsl"/>
+  
 </xsl:stylesheet>

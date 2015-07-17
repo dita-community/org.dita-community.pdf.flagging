@@ -19,5 +19,9 @@
     value="xsl/flagging-extensions.xsl" 
       type="file"
   />
+  <feature extension="dita.xsl.xslfo"
+    value="xsl/topic2fo-extensions.xsl" 
+      type="file"
+  />
       
 </plugin>
