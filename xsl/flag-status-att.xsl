@@ -31,6 +31,9 @@
     </xsl:if>
     
     <xsl:choose>
+      <xsl:when test="not($doFlagStatusValues)">
+        <!-- Status flagging not turned on, do nothing. -->
+      </xsl:when>
       <xsl:when test="@status = ('new')">
          <prop
           action="flag"
