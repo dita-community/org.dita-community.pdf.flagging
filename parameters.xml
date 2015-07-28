@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<params>
+  <param name="flagStatusValues" 
+      expression="${args.flag.status.values}" if="args.flag.status.values"
+  />
+
+</params>

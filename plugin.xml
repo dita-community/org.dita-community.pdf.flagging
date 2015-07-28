@@ -1,0 +1,31 @@
+<!-- 
+  PDF flagging extensions to support flagging of entire
+  topics and flagging of @status values.
+  
+  Copyright (c) 2015 DeltaXML
+  Licensed under Apache 2 license
+  
+  -->
+<plugin id="org.dita-community.flagging.pdf">
+
+  <require plugin="org.dita.pdf2"/> 
+  
+  <feature extension="package.support.name" value="Eliot Kimber"/>
+  <feature extension="package.support.email" value="ekimber@contrext.com"/>  
+  
+
+  <!-- PDF2 plugin extensions: -->
+  <feature extension="dita.xsl.xslfo.flagging-preprocess"
+    value="xsl/flagging-extensions.xsl" 
+      type="file"
+  />
+  <feature extension="dita.xsl.xslfo"
+    value="xsl/topic2fo-extensions.xsl" 
+      type="file"
+  />
+  <feature extension="dita.conductor.pdf2flagging-preprocess.param"
+    value="parameters.xml" 
+      type="file"
+  />
+      
+</plugin>
