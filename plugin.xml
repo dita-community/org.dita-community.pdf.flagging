@@ -23,5 +23,9 @@
     value="xsl/topic2fo-extensions.xsl" 
       type="file"
   />
+  <feature extension="dita.conductor.pdf2flagging-preprocess.param"
+    value="parameters.xml" 
+      type="file"
+  />
       
 </plugin>
