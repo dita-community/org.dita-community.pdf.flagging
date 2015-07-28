@@ -9,7 +9,21 @@
     exclude-result-prefixes="xsl opentopic-func exsl exslf xs"
     version="2.0">
 
- 
+  <!-- =========================================================
+       PDF2 Transformation Type Flagging Extensions
+       
+       This module implements topic-level flagging for revisions (change
+       bars) and conditional attributes. It is a simple override
+       to the base template for topic/topic from flagging-extensions.xsl.
+              
+       Copyright (c) 2015 DITA Community (dita-community.org)
+       
+       Source code contributed to the DITA community by 
+       DeltaXML, http://www.deltaxml.com.
+       
+       ========================================================== -->
+
+   
    
    <!-- Override of topic-level flagging 
   
@@ -20,7 +34,7 @@
       <xsl:param name="doDebug" as="xs:boolean" select="false()"/>
      
      <xsl:variable name="doDebug" as="xs:boolean" select="true()"/>
-     <xsl:if test="true() or $doDebug">
+     <xsl:if test="$doDebug">
        <xsl:message> + [DEBUG] topic/topic: Override for topic-level flagging.</xsl:message>
      </xsl:if>
       <xsl:variable name="id">
