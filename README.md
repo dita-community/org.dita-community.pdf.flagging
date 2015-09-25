@@ -1,4 +1,3 @@
-# org.dita-community.pdf.flagging
 PDF Revision and Status Flagging Extensions
 ===========================================
 
