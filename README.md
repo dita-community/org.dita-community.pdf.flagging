@@ -15,5 +15,9 @@ to "true" (it is off by default). When set to true, elements with @status values
 are highlighted green for "added", blue for "changed", and red with strikethrough
 for "deleted".
 
-Tested with OT 1.8.5. Should work with 2.1 (if you try it and it doesn't work
-please log an issue on GitHub: https://github.com/dita-community/org.dita-community.pdf.flagging/issues).
+This plugin works with the out-of-the-box 2.x version of the Open Toolkit.
+
+To use it with the 1.8.5 Open Toolkit you must apply the patch provided
+in the dita-ot-1.8.5-patch directory in this project (requires replacing
+two files in the PDF2 plugin).
+
