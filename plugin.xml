@@ -15,16 +15,12 @@
   
 
   <!-- PDF2 plugin extensions: -->
-  <feature extension="dita.xsl.xslfo.flagging-preprocess"
-    value="xsl/flagging-extensions.xsl" 
+  <feature extension="dita.xsl.topicpull"
+    value="xsl/topicPullExtensions.xsl" 
       type="file"
   />
   <feature extension="dita.xsl.xslfo"
     value="xsl/topic2fo-extensions.xsl" 
-      type="file"
-  />
-  <feature extension="dita.conductor.pdf2flagging-preprocess.param"
-    value="parameters.xml" 
       type="file"
   />
       

@@ -33,11 +33,6 @@
   <xsl:include href="flag-topics.xsl"/>
   <xsl:include href="flag-status-att.xsl"/>
   
-  <xsl:param name="flagStatusValues" as="xs:string" select="'false'"/>
-  
-  <xsl:variable name="doFlagStatusValues" as="xs:boolean"
-     select="matches($flagStatusValues, 'yes|1|true|on', 'i')"
-  />
   
   
 </xsl:stylesheet>
