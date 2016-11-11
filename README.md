@@ -10,5 +10,5 @@ This plugin works with the out-of-the-box 2.x version of the Open Toolkit.
 
 To use it with the 1.8.5 Open Toolkit you must apply the patch provided
 in the dita-ot-1.8.5-patch directory in this project (requires replacing
-two files in the PDF2 plugin).
+three files in the PDF2 plugin).
 
