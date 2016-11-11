@@ -2,7 +2,7 @@
   PDF flagging extensions to support flagging of entire
   topics and flagging of @status values.
   
-  Copyright (c) 2015 DeltaXML
+  Copyright (c) 2015, 2016 DeltaXML
   Licensed under Apache 2 license
   
   -->
@@ -15,17 +15,17 @@
   
 
   <!-- PDF2 plugin extensions: -->
-  <feature extension="dita.xsl.flag-module"
-    value="xsl/flagging-extensions.xsl" 
+  <feature extension="dita.xsl.topicpull"
+    value="xsl/topicpull-extensions.xsl" 
       type="file"
   />
   <feature extension="dita.xsl.xslfo"
     value="xsl/topic2fo-extensions.xsl" 
       type="file"
   />
-  <feature extension="dita.conductor.pdf2flagging-preprocess.param"
-    value="parameters.xml" 
-      type="file"
+  <feature extension="dita.xsl.xhtml"
+    value="xsl/htmlflag-extensions.xsl"
+    type="file"
   />
       
 </plugin>
