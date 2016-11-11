@@ -15,7 +15,7 @@
   
 
   <!-- PDF2 plugin extensions: -->
-  <feature extension="dita.xsl.xslfo.flagging-preprocess"
+  <feature extension="dita.xsl.flag-module"
     value="xsl/flagging-extensions.xsl" 
       type="file"
   />
