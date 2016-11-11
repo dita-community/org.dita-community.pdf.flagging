@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- Deprecated since 2.2 -->
 <xsl:stylesheet
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:exsl="http://exslt.org/common"
+    xmlns:exslf="http://exslt.org/functions"
     xmlns:opentopic-func="http://www.idiominc.com/opentopic/exsl/function"
-    exclude-result-prefixes="xsl opentopic-func"
+    exclude-result-prefixes="xsl opentopic-func exsl exslf"
     xmlns:suitesol="http://suite-sol.com/namespaces/mapcounts"
     version="2.0">
 
    <xsl:import href="flag-rules.xsl"/>
-   <xsl:import href="plugin:org.dita.base:xsl/common/dita-utilities.xsl"/>
-   <xsl:import href="plugin:org.dita.base:xsl/common/output-message.xsl"/>
-  
-   <dita:extension id="dita.xsl.xslfo.flagging-preprocess"
-     behavior="org.dita.dost.platform.ImportXSLAction"
-     xmlns:dita="http://dita-ot.sourceforge.net"
-   />
+   <xsl:import href="../../../../xsl/common/dita-utilities.xsl"/>
+   <xsl:import href="../../../../xsl/common/output-message.xsl"/>
 
+  <dita:extension id="dita.xsl.xslfo.flagging-preprocess"
+    behavior="org.dita.dost.platform.ImportXSLAction"
+    xmlns:dita="http://dita-ot.sourceforge.net"
+  />
+  
    <!--preserve the doctype-->
    <xsl:output method="xml" encoding="UTF-8" indent="no"></xsl:output>
 
@@ -25,7 +26,6 @@
    <!-- The document tree of filterfile returned by document($FILTERFILE,/)-->
 
    <!-- Define the error message prefix identifier -->
-   <!-- Deprecated since 2.3 -->
    <xsl:variable name="msgprefix">DOTX</xsl:variable>
 
    <xsl:variable name="FILTERFILEURL">
@@ -93,7 +93,7 @@
       <xsl:param name="flagrules" />
 
       <xsl:if test="$flagrules">
-         <xsl:for-each select="$flagrules/*[@changebar]">
+         <xsl:for-each select="exsl:node-set($flagrules)/*[@changebar]">
             
             <xsl:element name="{concat('suitesol:changebar-',$pi-name)}">
                <xsl:attribute name="id">
@@ -145,9 +145,9 @@
    <!-- For these elements, the flagging style can be applied directly to the fo element 
         already being created by the default DITA-OT processing -->
    <xsl:template match="*[contains(@class, ' topic/image ') or contains(@class,' topic/table ') or 
-               contains(@class, ' topic/ol ') or 
-               contains(@class, ' topic/ul ') or contains(@class, ' topic/sl ')]" 
-               priority="50">
+						   contains(@class, ' topic/ol ') or 
+						   contains(@class, ' topic/ul ') or contains(@class, ' topic/sl ')]" 
+						   priority="50">
 
       <xsl:variable name="id">
          <xsl:value-of select="generate-id(.)"/>
@@ -326,8 +326,8 @@
       already being created by the default DITA-OT processing, but now the startflag and endflag images 
       are placed inside the element rather than before and after it -->
    <xsl:template match="*[contains(@class,' topic/entry ') or contains(@class, ' topic/stentry ') or
-               contains(@class, ' topic/dd ') or contains(@class, ' topic/dt ') or 
-               contains(@class, ' topic/ddhd ') or contains(@class, ' topic/dthd ')]"
+						   contains(@class, ' topic/dd ') or contains(@class, ' topic/dt ') or 
+						   contains(@class, ' topic/ddhd ') or contains(@class, ' topic/dthd ')]"
            priority="30">
 
       <xsl:variable name="id">
@@ -380,9 +380,9 @@
       already being created by the default DITA-OT processing, 
       but startflag and endflag images are not supported (where would they go?) -->
    <xsl:template match="*[contains(@class,' topic/tgroup ') or contains(@class, ' topic/thead ') or
-               contains(@class,' topic/tfoot ') or contains(@class,' topic/tbody ') or contains(@class,' topic/row ') or contains(@class, ' topic/strow ') or
-               contains(@class, ' topic/dlentry ') or contains(@class, ' topic/dlhead ') or 
-               contains(@class, ' topic/sthead ')]"
+						   contains(@class,' topic/tfoot ') or contains(@class,' topic/tbody ') or contains(@class,' topic/row ') or contains(@class, ' topic/strow ') or
+						   contains(@class, ' topic/dlentry ') or contains(@class, ' topic/dlhead ') or 
+						   contains(@class, ' topic/sthead ')]"
            priority="20">
 
       <xsl:variable name="id">
@@ -418,7 +418,7 @@
       </xsl:apply-templates>
       
    </xsl:template>
-                
+   					   
    <!-- For all other elements, we try to apply the flagging style directly to the fo element 
       already being created by the default DITA-OT processing, and place the startflag and endflag images 
       inside the element -->
@@ -502,7 +502,8 @@
       <xsl:choose>
          <xsl:when test="$conflictexist='true' and $flagsParams/val/style-conflict[@foreground-conflict-color or @background-conflict-color]">
             <xsl:call-template name="output-message">
-               <xsl:with-param name="id" select="'DOTX054W'"/>
+               <xsl:with-param name="msgnum">054</xsl:with-param>
+               <xsl:with-param name="msgsev">W</xsl:with-param>
             </xsl:call-template>
 
             <xsl:if test="$flagsParams/val/style-conflict[@foreground-conflict-color]">
@@ -517,23 +518,23 @@
             </xsl:if>
 
          </xsl:when>
-         <xsl:when test="$conflictexist='false' and $flagrules/*[@color or @backcolor]">
+         <xsl:when test="$conflictexist='false' and exsl:node-set($flagrules)/*[@color or @backcolor]">
 
-            <xsl:if test="$flagrules/*[@color]">
+            <xsl:if test="exsl:node-set($flagrules)/*[@color]">
                <xsl:value-of select="$colorprop"/>
-               <xsl:value-of select="$flagrules/*[@color]/@color"/>
+               <xsl:value-of select="exsl:node-set($flagrules)/*[@color]/@color"/>
                <xsl:text>;</xsl:text>
             </xsl:if>
-            <xsl:if test="$flagrules/*[@backcolor]">
+            <xsl:if test="exsl:node-set($flagrules)/*[@backcolor]">
                <xsl:value-of select="$back-colorprop"/>
-               <xsl:value-of select="$flagrules/*[@backcolor]/@backcolor"/>
+               <xsl:value-of select="exsl:node-set($flagrules)/*[@backcolor]/@backcolor"/>
                <xsl:text>;</xsl:text>
             </xsl:if>
 
          </xsl:when>
       </xsl:choose>
       
-      <xsl:for-each select="$flagrules/*[@style]">
+      <xsl:for-each select="exsl:node-set($flagrules)/*[@style]">
             <xsl:choose>
                <xsl:when test="./@style='bold'">
                   <xsl:text>font-weight:</xsl:text>
@@ -562,7 +563,7 @@
 
    <xsl:template name="start-flagit">
       <xsl:param name="flagrules" />
-      <xsl:apply-templates select="$flagrules/*[1]" mode="start-flagit"/>
+      <xsl:apply-templates select="exsl:node-set($flagrules)/*[1]" mode="start-flagit"/>
    </xsl:template>
 
    <xsl:template match="prop|revprop" mode="start-flagit">
@@ -602,7 +603,7 @@
       <xsl:param name="flagrules">
          <!--xsl:call-template name="getrules"/-->
       </xsl:param>
-      <xsl:apply-templates select="$flagrules/*[last()]" mode="end-flagit"/>
+      <xsl:apply-templates select="exsl:node-set($flagrules)/*[last()]" mode="end-flagit"/>
    </xsl:template>
 
    <xsl:template match="prop|revprop" mode="end-flagit">
