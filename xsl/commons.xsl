@@ -28,6 +28,7 @@
   </xsl:template>
   
   <xsl:template match="*" mode="commonTopicProcessing">
+    
     <xsl:apply-templates select="suitesol:changebar-start"/>
     <xsl:apply-templates select="*[contains(@class, ' topic/title ')]"/>
     <xsl:apply-templates select="*[contains(@class, ' topic/prolog ')]"/>
@@ -41,6 +42,7 @@
   </xsl:template>
   
   <xsl:template match="*" mode="processConcept">
+    
     <fo:block xsl:use-attribute-sets="concept">
       <xsl:apply-templates select="suitesol:flagging-inside"/>
       <xsl:comment> concept/concept </xsl:comment>
@@ -49,6 +51,7 @@
   </xsl:template>
   
   <xsl:template match="*" mode="processReference">
+    
     <fo:block xsl:use-attribute-sets="reference">
       <xsl:apply-templates select="suitesol:flagging-inside"/>
       <xsl:apply-templates select="." mode="commonTopicProcessing"/>

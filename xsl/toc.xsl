@@ -18,6 +18,7 @@
      -->
     <xsl:template match="*[contains(@class, ' topic/topic ')]" mode="toc">
         <xsl:param name="include"/>
+      
         <xsl:variable name="topicLevel" as="xs:integer">
           <xsl:apply-templates select="." mode="get-topic-level"/>
         </xsl:variable>

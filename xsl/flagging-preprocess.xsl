@@ -16,6 +16,7 @@
    -->
    <xsl:template match="*[contains(@class, ' topic/topic ')]"
               priority="50">
+     
       <xsl:variable name="id">
          <xsl:value-of select="generate-id(.)"/>
       </xsl:variable>
