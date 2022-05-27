@@ -8,4 +8,7 @@
   <xsl:include href="commons.xsl"/>
   <xsl:include href="toc.xsl"/>
   
+  <!-- Set to "true" to turn on PDF flagging tracing -->
+  <xsl:param name="tracePdfFlagging" as="xs:string" select="'false'"/>
+  
 </xsl:stylesheet>

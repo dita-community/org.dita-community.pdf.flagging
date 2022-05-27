@@ -6,7 +6,7 @@
   Licensed under Apache 2 license
   
   -->
-<plugin id="org.dita-community.flagging.pdf">
+<plugin id="org.dita-community.pdf.flagging">
 
   <require plugin="org.dita.pdf2"/> 
   
